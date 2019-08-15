@@ -9,6 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ViewNewsActivity"></activity>
+        <activity android:name=".pages.home.home_news.CaiJing" />
+        <activity android:name=".pages.home.home_news.KeJi" />
+        <activity android:name=".pages.home.home_news.TiYu" />
+        <activity android:name=".pages.home.home_news.YuLe" />
+        <activity android:name=".pages.home.home_news.TouTiao" />
+        <activity android:name=".pages.mine.LoginActivity" />
+        <activity android:name=".pages.mine.MineActivity" />
+        <activity android:name=".pages.time.TimeActivity" />
+        <activity android:name=".pages.video.VideoActivity" />
+        <activity android:name=".pages.home.HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

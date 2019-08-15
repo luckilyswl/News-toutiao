@@ -1,18 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F2F2"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rg_tabs"/>
 
-</android.support.constraint.ConstraintLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_tabs"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:layout_height="56dp">
+
+        <RadioButton
+            android:id="@+id/rb_new"
+            style="@style/Custom.TabRadioButton"
+            android:checked="true"
+            android:drawableTop="@drawable/tab_sign_selector"
+            android:text="新闻" />
+
+        <RadioButton
+            android:id="@+id/rb_video"
+            style="@style/Custom.TabRadioButton"
+            android:drawableTop="@drawable/tab_record_selector"
+            android:text="视频" />
+
+        <RadioButton
+            android:id="@+id/rb_time"
+            style="@style/Custom.TabRadioButton"
+            android:drawableTop="@drawable/tab_contact_selector"
+            android:text="时刻" />
+
+        <RadioButton
+            android:id="@+id/rb_mine"
+            style="@style/Custom.TabRadioButton"
+            android:drawableTop="@drawable/tab_setting_selector"
+            android:text="我" />
+
+    </RadioGroup>
+
+</RelativeLayout >
