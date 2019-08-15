@@ -1,5 +1,6 @@
 package com.qingshangzuo.news;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,7 +39,9 @@ public class ViewNewsActivity extends Fragment {
     }
 
     private void initViews() {
-        //newsUrl = getIntent().getStringExtra("NEWS_URL");
+        //newsUrl =
+        Intent intent = getActivity().getIntent();
+        newsUrl = intent.getStringExtra("NEWS_URL");
 
         webView = rootView.findViewById(R.id.wv_news);
         webView.loadUrl(newsUrl);

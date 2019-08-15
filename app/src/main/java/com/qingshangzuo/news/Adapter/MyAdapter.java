@@ -15,6 +15,7 @@ import com.qingshangzuo.news.MyViewHolder;
 import com.qingshangzuo.news.NewsData;
 import com.qingshangzuo.news.R;
 import com.qingshangzuo.news.ViewNewsActivity;
+import com.qingshangzuo.news.pages.home.home_news.TouTiao;
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
@@ -33,6 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         View view = LayoutInflater.from(context).inflate(R.layout.news_list_item,parent,false);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
+
     }
 
     @Override
