@@ -1,49 +1,64 @@
 package com.qingshangzuo.news;
 
+
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class ViewNewsActivity extends Fragment {
+import com.qingshangzuo.news.pages.mine.LoginActivity;
 
-    private View rootView;
+import cn.bmob.v3.BmobUser;
+
+public class ViewNewsActivity extends AppCompatActivity {
+
     private String newsUrl;
     private WebView webView;
     private EditText edtComment;
     private Button btnComment;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_view_news);
-
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.activity_view_news,container,false);
+        setContentView(R.layout.activity_view_news);
 
         initViews();
 
-        return rootView;
+        initCommentViews();
     }
 
     private void initViews() {
         //newsUrl =
-        Intent intent = getActivity().getIntent();
-        newsUrl = intent.getStringExtra("NEWS_URL");
+        //Intent intent = getActivity().getIntent();
+        newsUrl = getIntent().getStringExtra("NEWS_URL");
 
-        webView = rootView.findViewById(R.id.wv_news);
+        webView = findViewById(R.id.wv_news);
         webView.loadUrl(newsUrl);
+    }
+
+    private void initCommentViews() {
+        edtComment = findViewById(R.id.edt_comment);
+        btnComment = findViewById(R.id.btn_comment);
+
+        btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(! BmobUser.isLogin()){
+                    Intent intent = new Intent();
+                    intent.setClass(ViewNewsActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+
+                 /*if(BmobUser.getCurrentUser() == null){
+                    Intent intent = new Intent();
+                    intent.setClass(ViewNewsActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }*/
+            }
+        });
     }
 }

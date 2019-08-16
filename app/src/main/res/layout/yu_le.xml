@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".pages.home.home_news.YuLe">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:gravity="center"
@@ -67,6 +67,13 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </LinearLayout>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_view">
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

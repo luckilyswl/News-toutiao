@@ -7,69 +7,63 @@
     tools:context=".pages.home.HomeActivity">
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F5F2F2"
-    android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/beijing"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="14sp"
-            app:tabIndicatorColor="#FFC107"
-            app:tabSelectedTextColor="#161616"
-            app:tabMode="fixed"
-            app:tabTextAppearance="@style/MyTabLayoutTextAppearance">
-        </android.support.design.widget.TabLayout>
+            android:layout_height="100dp"
+            android:background="@drawable/beijing"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="14sp"
+                app:tabIndicatorColor="#FFC107"
+                app:tabSelectedTextColor="#161616"
+                app:tabMode="fixed"
+                app:tabTextAppearance="@style/MyTabLayoutTextAppearance">
+            </android.support.design.widget.TabLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="#fff"
+                    android:text="土家族"/>
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:text="搜索"
+                    android:gravity="center"
+                    android:layout_marginLeft="260dp"
+                    android:background="@drawable/search"
+                    android:textAlignment="center"
+                    android:drawableLeft="@android:drawable/ic_menu_search"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
+            android:background="#F5F2F2"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:textColor="#fff"
-                android:text="土家族"/>
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:text="搜索"
-                android:gravity="center"
-                android:layout_marginLeft="260dp"
-                android:background="@drawable/search"
-                android:textAlignment="center"
-                android:drawableLeft="@android:drawable/ic_menu_search"/>
-
-        </LinearLayout>
-
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/list_view">
-
-    </android.support.v7.widget.RecyclerView>
-
-</LinearLayout>
 
 </FrameLayout>
