@@ -4,15 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F2F2"
     tools:context=".pages.video.VideoActivity">
 
-    <TextView
-        android:id="@+id/content_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        android:text="vvv"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:background="@drawable/card"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="动漫打斗短视频"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="14dp"
+            android:textColor="#000"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:id="@+id/iv_video"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/beijing" />
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="知迅视频号"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="14dp"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
 
 </FrameLayout>
