@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.qingshangzuo.news.Adapter.MyAdapter;
 import com.qingshangzuo.news.MyViewHolder;
 import com.qingshangzuo.news.NewsData;
 import com.qingshangzuo.news.R;
@@ -117,86 +118,41 @@ public class TouTiao extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(true);
+               // swipeRefreshLayout.setRefreshing(true);
               //  serviceCardLayout.removeAllViews();
-                new Thread(runnable).run();
-                swipeRefreshLayout.setRefreshing(false);
+              //  new Thread(runnable).run();
+              //  swipeRefreshLayout.setRefreshing(false);
+                refreshFruits();
             }
         });
 
         new Thread(runnable).start();
 
     }
-}
 
-/**
- * 适配器
- */
-class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-
-    private NewsData newsData;
-    private Context context;
-
-    //构造方法
-    public MyAdapter(Context context, NewsData newsData) {
-        this.context = context;
-        this.newsData = newsData;
-    }
-
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(context).inflate(R.layout.news_list_item, parent, false);
-        MyViewHolder myViewHolder = new MyViewHolder(view);
-        return myViewHolder;
-
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final NewsData.ResultBean.DataBean dataBean = newsData.getResult().getData().get(position);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+    private void refreshFruits() {
+        new Thread(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(context, ViewNewsActivity.class);
-                intent.putExtra("NEWS_URL", dataBean.getUrl());
-                context.startActivity(intent);
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        initNewsData();
+                        adapter.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
             }
-        });
-
-        holder.tvTitle.setText(dataBean.getTitle());
-        holder.tvAuthor.setText(dataBean.getAuthor_name());
-        holder.tvTime.setText(dataBean.getDate());
-        Glide.with(context).load(Uri.parse(dataBean.getThumbnail_pic_s())).into(holder.newsHeadImg);
+        }).start();
     }
 
-    @Override
-    public int getItemCount() {
-
-        if (newsData == null) {
-            return 0;
-        }
-
-        if (newsData.getResult() == null) {
-            return 0;
-        }
-
-        if (newsData.getResult().getData() == null) {
-            return 0;
-        }
-
-        int count = newsData.getResult().getData().size();
-
-        Log.e("MyAdapter", "count = " + count);
-
-        return count;
-    }
-
-    public void changeData(NewsData newsData) {
-        Log.e("MyAdapter", "changData ");
-        this.newsData = newsData;
-        notifyDataSetChanged();
+    private void initNewsData() {
+        getDataFromApi();
     }
 }
+
