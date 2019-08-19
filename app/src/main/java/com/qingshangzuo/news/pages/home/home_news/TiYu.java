@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.qingshangzuo.news.Adapter.MyAdapter;
 import com.qingshangzuo.news.MyViewHolder;
 import com.qingshangzuo.news.NewsData;
 import com.qingshangzuo.news.R;
